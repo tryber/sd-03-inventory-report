@@ -10,12 +10,22 @@ class Inventory:
             read = csv.DictReader(file, delimiter=",")
             data = []
             for row in read:
-                data.append({
-                  "nome_da_empresa": row['nome_da_empresa'],
-                  "data_de_fabricacao": row['data_de_fabricacao'],
-                  "data_de_validade": row['data_de_validade']
-                })
+                data.append(
+                    {
+                        "nome_da_empresa": row["nome_da_empresa"],
+                        "data_de_fabricacao": row["data_de_fabricacao"],
+                        "data_de_validade": row["data_de_validade"],
+                    }
+                )
             if mode == "simples":
                 return SimpleReport.generate(data)
             if mode == "completo":
                 return CompleteReport.generate(data)
+
+
+if __name__ == "__main__":
+    print(
+        Inventory.import_data(
+            "inventory_report/data/inventory.csv", "completo"
+        )
+    )

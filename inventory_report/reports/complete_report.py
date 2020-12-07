@@ -19,13 +19,13 @@ class CompleteReport(SimpleReport):
                 biggest_company_value = quantity
                 biggest_company = company
 
-        relatory = (
+        return (
             f"Data de fabricação mais antiga: {oldest}\n"
-            f"Data de validade mais próxima: {closest}\n"
-            "Empresa com maior quantidade de produtos "
-            f"estocados: {biggest_company}\n\n"
-            "Produtos Estocados por empresa: \n"
-            "\n".join(
+            + f"Data de validade mais próxima: {closest}\n"
+            + "Empresa com maior quantidade de produtos "
+            + f"estocados: {biggest_company}\n\n"
+            + "Produtos Estocados por empresa: \n"
+            + "\n".join(
                 [
                     f"- {company}: {quantity}"
                     for company, quantity in name_company.items()
@@ -33,4 +33,3 @@ class CompleteReport(SimpleReport):
             )
             + "\n"
         )
-        return relatory
