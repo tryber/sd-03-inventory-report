@@ -22,8 +22,8 @@ class CompleteReport(SimpleReport):
         return (
             f"Data de fabricação mais antiga: {oldest}\n"
             + f"Data de validade mais próxima: {closest}\n"
-            + "Empresa com maior quantidade de produtos "
-            + f"estocados: {biggest_company}\n\n"
+            + "Empresa com maior quantidade de produtos estocados: "
+            + f"{biggest_company}\n\n"
             + "Produtos Estocados por empresa: \n"
             + "\n".join(
                 [
