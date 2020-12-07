@@ -41,14 +41,14 @@ class SimpleReport:
 
     @staticmethod
     def generate(products):
-        data = group_list_by_key(products, 'nome_da_empresa')
+        productsGroupedByName = group_list_by_key(products, 'nome_da_empresa')
         stock = 'Empresa com maior quantidade de produtos estocados:'
         date = 'Data de fabricação mais antiga:'
         validate = 'Data de validade mais próxima:'
         grather_stock = {'name': '', 'quantity': 0}
         older_fabricate = older_fabricate_date(products)
         older_validate = older_validate_date(products)
-        grather_stock = grather_company_stock(data)
+        grather_stock = grather_company_stock(productsGroupedByName)
 
         return f"""{date} {older_fabricate}
             {validate} {older_validate}
