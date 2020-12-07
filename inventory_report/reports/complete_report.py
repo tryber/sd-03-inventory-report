@@ -46,13 +46,12 @@ class CompleteReport(SimpleReport):
         previousResult = super().generate(prod)
         companies = super().company_separator(cls, prod)
         company_str = [
-            f"- {company['name']}: {company['quantity']}"
-            for company in companies
+            f"- {company}: {quantity}"
+            for company, quantity in companies.items()
         ]
         separator = "\n"
         return f"""{previousResult}
-Produtos estocados por empresa:
-{separator.join(company_str)}
+Produtos Estocados por empresa: \n{separator.join(company_str)}
 """
 
 

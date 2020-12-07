@@ -1,4 +1,5 @@
 from datetime import datetime
+import collections
 
 teste = [
     {
@@ -43,10 +44,8 @@ teste = [
 class SimpleReport:
     def company_separator(self, myList):
         prod = [elem["nome_da_empresa"] for elem in myList]
-        return [
-            {"name": company, "quantity": prod.count(company)}
-            for company in set(prod)
-        ]
+        companies = collections.Counter(prod)
+        return companies
 
     @classmethod
     def generate(cls, prod):
@@ -57,14 +56,10 @@ class SimpleReport:
             for elem in prod
             if today < datetime.strptime(elem["data_de_validade"], "%Y-%m-%d")
         ]
-        company_stock = cls.company_separator(cls, prod)
-        enterprise = {"name": "", "quantity": 0}
-        for elem in company_stock:
-            if elem["quantity"] > enterprise["quantity"]:
-                enterprise = elem
+        company_stock = cls.company_separator(cls, prod).most_common(1)[0][0]
         return f"""Data de fabricação mais antiga: {min(manufactured_list)}
 Data de validade mais próxima: {min(valid_list)}
-Empresa com maior quantidade de produtos estocados: {enterprise["name"]}
+Empresa com maior quantidade de produtos estocados: {company_stock}
 """
 
 
