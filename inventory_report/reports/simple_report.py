@@ -40,17 +40,17 @@ class SimpleReport:
         return grather_stock
 
     @classmethod
-    def generate(self, products):
-        productsGroupedByName = self.group_list_by_key(
+    def generate(cls, products):
+        productsGroupedByName = cls.group_list_by_key(
             products, "nome_da_empresa"
         )
         stock = "Empresa com maior quantidade de produtos estocados:"
         date = "Data de fabricação mais antiga:"
         validate = "Data de validade mais próxima:"
         grather_stock = {"name": "", "quantity": 0}
-        older_fabricate = self.older_fabricate_date(products)
-        older_validate = self.older_validate_date(products)
-        grather_stock = self.grather_company_stock(productsGroupedByName)
+        older_fabricate = cls.older_fabricate_date(products)
+        older_validate = cls.older_validate_date(products)
+        grather_stock = cls.grather_company_stock(productsGroupedByName)
 
         return f"""{date} {older_fabricate}
             {validate} {older_validate}
