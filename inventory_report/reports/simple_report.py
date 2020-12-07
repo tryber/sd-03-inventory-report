@@ -16,7 +16,6 @@ def parse_list(product, closest, oldest, name_company):
 class SimpleReport:
     @staticmethod
     def generate(list):
-        # self.list = list
         oldest = list[0]["data_de_fabricacao"]
         closest = list[0]["data_de_validade"]
         biggest_company = ""
@@ -39,6 +38,7 @@ class SimpleReport:
             + f"estocados: {biggest_company}\n"
         )
         return relatory
+
 
 # print(relatory)
 # with open("../data/inventory.json", "r") as file:
