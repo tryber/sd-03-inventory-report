@@ -2,36 +2,52 @@ from datetime import datetime
 
 teste = [
     {
-        "id": "1",
-        "nome_do_produto": "Nicotine Polacrilex",
-        "nome_da_empresa": "Target Corporation",
-        "data_de_fabricacao": "2020-02-18",
-        "data_de_validade": "2022-09-17",
-        "numero_de_serie": "CR25 1551 4467 2549 4402 1",
-        "instrucoes_de_armazenamento": "instrucao 1",
+        "id": 1,
+        "nome_do_produto": "CALENDULA OFFICINALIS FLOWERING TOP",
+        "nome_da_empresa": "Forces of Nature",
+        "data_de_fabricacao": "2020-07-04",
+        "data_de_validade": "2023-02-09",
+        "numero_de_serie": "FR48 2002 7680 97V4 W6FO LEBT 081",
+        "instrucoes_de_armazenamento": "in blandit ultrices enim",
     },
     {
-        "id": "2",
-        "nome_do_produto": "fentanyl citrate",
-        "nome_da_empresa": "Galena Biopharma",
-        "data_de_fabricacao": "2019-12-06",
-        "data_de_validade": "2022-12-25",
-        "numero_de_serie": "FR29 5951 7573 74OY XKGX 6CSG D20",
-        "instrucoes_de_armazenamento": "instrucao 2",
+        "id": 2,
+        "nome_do_produto": "sodium ferric gluconate complex",
+        "nome_da_empresa": "sanofi-aventis U.S. LLC",
+        "data_de_fabricacao": "2020-05-31",
+        "data_de_validade": "2023-01-17",
+        "numero_de_serie": "SE95 2662 8860 5529 8299 2861",
+        "instrucoes_de_armazenamento": "duis bibendum morbi",
     },
     {
-        "id": "3",
-        "nome_do_produto": "fentanyl citrate",
-        "nome_da_empresa": "Galena Biopharma",
-        "data_de_fabricacao": "2019-12-06",
-        "data_de_validade": "2022-12-25",
-        "numero_de_serie": "FR29 5951 7573 74OY XKGX 6CSG D20",
-        "instrucoes_de_armazenamento": "instrucao 2",
+        "id": 3,
+        "nome_do_produto": "Dexamethasone Sodium Phosphate",
+        "nome_da_empresa": "sanofi-aventis U.S. LLC",
+        "data_de_fabricacao": "2019-09-13",
+        "data_de_validade": "2023-02-13",
+        "numero_de_serie": "BA52 2034 8595 7904 7131",
+        "instrucoes_de_armazenamento": "morbi quis tortor id",
+    },
+    {
+        "id": 4,
+        "nome_do_produto": "Uricum acidum, Benzoicum acidum",
+        "nome_da_empresa": "Newton Laboratories",
+        "data_de_fabricacao": "2019-11-08",
+        "data_de_validade": "2019-11-25",
+        "numero_de_serie": "FR38 9203 3060 400T QQ8B HHS0 Q46",
+        "instrucoes_de_armazenamento": "velit eu est congue elementum",
     },
 ]
 
 
 class SimpleReport:
+    def company_separator(self, myList):
+        prod = [elem["nome_da_empresa"] for elem in myList]
+        return [
+            {"name": company, "quantity": prod.count(company)}
+            for company in set(prod)
+        ]
+
     @classmethod
     def generate(cls, prod):
         today = datetime.today()
@@ -41,11 +57,7 @@ class SimpleReport:
             for elem in prod
             if today < datetime.strptime(elem["data_de_validade"], "%Y-%m-%d")
         ]
-        company_list = [elem["nome_da_empresa"] for elem in prod]
-        company_stock = [
-            {"name": company, "quantity": company_list.count(company)}
-            for company in set(company_list)
-        ]
+        company_stock = cls.company_separator(cls, prod)
         enterprise = {"name": "", "quantity": 0}
         for elem in company_stock:
             if elem["quantity"] > enterprise["quantity"]:
@@ -57,4 +69,4 @@ Empresa com maior quantidade de produtos estocados: {enterprise["name"]}
 
 
 if __name__ == "__main__":
-    SimpleReport.generate(teste)
+    print(SimpleReport.generate(teste))
