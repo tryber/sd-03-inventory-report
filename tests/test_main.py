@@ -32,9 +32,9 @@ def test_validar_menu_enviar_um_arquivo_csv_completo(capsys):
                 "Target Corporation\n\n"
 
                 "Produtos Estocados por empresa: \n"
-                "- Target Corporation: 2\n"
-                "- Galena Biopharma: 3\n"
-                "- Cantrell Drug Company: 3\n"
+                "- Target Corporation: 4\n"
+                "- Galena Biopharma: 2\n"
+                "- Cantrell Drug Company: 2\n"
                 "- Moore Medical LLC: 1\n"
                 "- REMEDYREPACK: 1\n"
     )
@@ -69,9 +69,9 @@ def test_validar_menu_enviar_um_arquivo_json_completo(capsys):
                 "Target Corporation\n\n"
 
                 "Produtos Estocados por empresa: \n"
-                "- Target Corporation: 2\n"
-                "- Galena Biopharma: 3\n"
-                "- Cantrell Drug Company: 3\n"
+                "- Target Corporation: 4\n"
+                "- Galena Biopharma: 2\n"
+                "- Cantrell Drug Company: 2\n"
                 "- Moore Medical LLC: 1\n"
                 "- REMEDYREPACK: 1\n"
     )
@@ -106,9 +106,9 @@ def test_validar_menu_enviar_um_arquivo_xml_completo(capsys):
                 "Target Corporation\n\n"
 
                 "Produtos Estocados por empresa: \n"
-                "- Target Corporation: 2\n"
-                "- Galena Biopharma: 3\n"
-                "- Cantrell Drug Company: 3\n"
+                "- Target Corporation: 4\n"
+                "- Galena Biopharma: 2\n"
+                "- Cantrell Drug Company: 2\n"
                 "- Moore Medical LLC: 1\n"
                 "- REMEDYREPACK: 1\n"
     )
