@@ -43,9 +43,6 @@ def test_validar_importerdata_importar_um_arquivo_json_simples():
     report = Inventory.import_data(
         "inventory_report/data/inventory.json", "simples"
     )
-    report = Inventory.import_data(
-        "inventory_report/data/inventory.json", "simples"
-    )
     assert report in expect
 
 
@@ -61,6 +58,9 @@ def test_validar_importerdata_importar_um_arquivo_json_completo():
         "- Cantrell Drug Company: 2\n"
         "- Moore Medical LLC: 1\n"
         "- REMEDYREPACK: 1\n"
+    )
+    report = Inventory.import_data(
+        "inventory_report/data/inventory.json", "completo"
     )
     assert expect in report
 
@@ -90,5 +90,8 @@ def test_validar_importerdata_importar_um_arquivo_xml_completo():
         "- Cantrell Drug Company: 2\n"
         "- Moore Medical LLC: 1\n"
         "- REMEDYREPACK: 1\n"
+    )
+    report = Inventory.import_data(
+        "inventory_report/data/inventory.xml", "completo"
     )
     assert expect in report
