@@ -21,36 +21,36 @@ class InventoryRefactor(Iterable):
 
 
 if __name__ == "__main__":
-    # print(
-    #     InventoryRefactor.import_data(
-    #         "inventory_report/data/inventory.csv", "simples"
-    #     )
-    # )
-    # print(
-    #     InventoryRefactor.import_data(
-    #         "inventory_report/data/inventory.csv", "completo"
-    #     )
-    # )
-    # print(
-    #     InventoryRefactor.import_data(
-    #         "inventory_report/data/inventory.json", "simples"
-    #     )
-    # )
-    # print(
-    #     InventoryRefactor.import_data(
-    #         "inventory_report/data/inventory.json", "completo"
-    #     )
-    # )
-    # print(
-    #     InventoryRefactor.import_data(
-    #         "inventory_report/data/inventory.xml", "simples"
-    #     )
-    # )
-    # print(
-    #     InventoryRefactor.import_data(
-    #         "inventory_report/data/inventory.xml", "completo"
-    #     )
-    # )
+    print(
+        InventoryRefactor.import_data(
+            "inventory_report/data/inventory.csv", "simples"
+        )
+    )
+    print(
+        InventoryRefactor.import_data(
+            "inventory_report/data/inventory.csv", "completo"
+        )
+    )
+    print(
+        InventoryRefactor.import_data(
+            "inventory_report/data/inventory.json", "simples"
+        )
+    )
+    print(
+        InventoryRefactor.import_data(
+            "inventory_report/data/inventory.json", "completo"
+        )
+    )
+    print(
+        InventoryRefactor.import_data(
+            "inventory_report/data/inventory.xml", "simples"
+        )
+    )
+    print(
+        InventoryRefactor.import_data(
+            "inventory_report/data/inventory.xml", "completo"
+        )
+    )
 
     inventory = InventoryRefactor()
     inventory.import_data("inventory_report/data/inventory.csv", "simples")
