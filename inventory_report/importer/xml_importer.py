@@ -6,7 +6,7 @@ class XmlImporter(Importer):
     def import_data(cls, filepath):
         if not filepath.endswith('.xml'):
             raise ValueError('Arquivo inválido')
-        with open(f"../{filepath}") as xml_file:
+        with open(filepath) as xml_file:
             root = ET.parse(xml_file).getroot()
             records = root.findall('record')
             output = []
