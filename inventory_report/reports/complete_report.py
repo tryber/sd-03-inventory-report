@@ -30,13 +30,12 @@ class CompleteReport:
         s1 = f"Data de fabricação mais antiga: {oldest}\n"
         s2 = f"Data de validade mais próxima: {nearest_expire}\n"
         s3 = "Empresa com maior quantidade de produtos estocados:"
-        s4 = f" {major_stock}\n\n"
+        s4 = f" {major_stock}\n"
         s5 = "Produtos Estocados por empresa: \n"
         st = s1 + s2 + s3 + s4 + s5
         for i in range(len(stock_list)):
             st = st + f"- {stock_list[i][0]}: {stock_list[i][1]}\n"
         return st
-
 # test_list = [
 #         {
 #             "id": 1,
