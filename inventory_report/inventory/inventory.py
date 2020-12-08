@@ -30,7 +30,7 @@ class Inventory:
             root = ET.parse(file).getroot()
             return [
                 {
-                    "nome_da_empresa": record.find("nome_do_produto").text,
+                    "nome_da_empresa": record.find("nome_da_empresa").text,
                     "data_de_fabricacao": record.find(
                         "data_de_fabricacao"
                     ).text,
