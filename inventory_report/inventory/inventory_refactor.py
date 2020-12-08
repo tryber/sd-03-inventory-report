@@ -10,10 +10,7 @@ class InventoryRefactor(Iterable):
         self.data = []
 
     def import_data(self, file_name, mode):
-        self.data = self.importer.import_data(file_name)
-        if mode == "simples":
-            return SimpleReport.generate(self.data)
-        return CompleteReport.generate(self.data)
+        self.data += self.importer.import_data(file_name)
 
     def __iter__(self):
         return InventoryIterator(self.data)
