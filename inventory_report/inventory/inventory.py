@@ -3,8 +3,8 @@ import json
 from xml.dom.minidom import parse
 
 
-# from inventory_report.reports.simple_report import SimpleReport
-# from inventory_report.reports.complete_report import CompleteReport
+from inventory_report.reports.simple_report import SimpleReport
+from inventory_report.reports.complete_report import CompleteReport
 
 
 def getNodeText(node):
@@ -26,19 +26,11 @@ class Inventory:
                     list.append(obj)
                 print(list)
             return list
-            # if format == 'simples':
-            #     SimpleReport.generate(list)
-            # elif format == 'completo':
-            #     CompleteReport.generate(list)
         if path.endswith(".json"):
             with open(path) as file:
                 list = json.load(file)
                 print(list)
             return list
-            # if format == 'simples':
-            #     SimpleReport.generate(list)
-            # elif format == 'completo':
-            #     CompleteReport.generate(list)
         if path.endswith(".xml"):
             doc = parse(path)
             records = doc.getElementsByTagName("record")
@@ -74,18 +66,10 @@ class Inventory:
                     "instrucoes_de_armazenamento": instrucoes_de_armazenamento,
                 }
                 list.append(obj)
-            print(list)
-            return list 
-            # id = doc.getElementsByTagName("id")[0]
-            # value = getNodeText(id)
-            # print(value)
-            # print("Node Name : %s" % name.nodeName)
-            # print("Node Value : %s \n" % getNodeText(name))
-            # if format == 'simples':
-            #     SimpleReport.generate(list)
-            # elif format == 'completo':
-            #     CompleteReport.generate(list)
-
+            if format == 'simples':
+                return SimpleReport.generate(list)
+            elif format == 'completo':
+                return CompleteReport.generate(list)
 
 
 # https://www.kite.com/python/docs/xml.dom.minidom.Document.firstChild
