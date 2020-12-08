@@ -1,12 +1,8 @@
 from abc import ABC, abstractmethod
 
+
 class Importer(ABC):
-  def build(self):
-
-  @abstractmethod
-  def CsvImporter(self):
-  
-  def CsvImporter(self):
-  
-  def CsvImporter(self):
-
+    @classmethod
+    @abstractmethod
+    def import_data(cls, filepath):
+        raise NotImplementedError
