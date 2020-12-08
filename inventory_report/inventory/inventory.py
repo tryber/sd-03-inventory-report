@@ -1,5 +1,6 @@
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
+from xml.etree import ElementTree
 import csv
 import json
 
@@ -19,6 +20,18 @@ class Inventory:
         with open(path) as file:
             prod_list = json.load(file)
             return prod_list
+
+    @classmethod
+    def read_xml(cls, path):
+        root = ElementTree.parse(path).getroot()
+        records = root.findall("record")
+        records_list = []
+        for elem in records:
+            temp_dict = {}
+            for e in elem:
+                temp_dict[e.tag] = e.text
+            records_list.append(temp_dict)
+        return records_list
 
     @classmethod
     def import_data(cls, path, rel_type):
@@ -52,5 +65,13 @@ if __name__ == "__main__":
     print(
         Inventory.import_data(
             "inventory_report/data/inventory.json", "completo"
+        )
+    )
+    print(
+        Inventory.import_data("inventory_report/data/inventory.xml", "simples")
+    )
+    print(
+        Inventory.import_data(
+            "inventory_report/data/inventory.xml", "completo"
         )
     )
