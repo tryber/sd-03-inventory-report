@@ -46,32 +46,3 @@ class Inventory:
             return SimpleReport.generate(prod_list)
         else:
             return CompleteReport.generate(prod_list)
-
-
-if __name__ == "__main__":
-    print(
-        Inventory.import_data("inventory_report/data/inventory.csv", "simples")
-    )
-    print(
-        Inventory.import_data(
-            "inventory_report/data/inventory.csv", "completo"
-        )
-    )
-    print(
-        Inventory.import_data(
-            "inventory_report/data/inventory.json", "simples"
-        )
-    )
-    print(
-        Inventory.import_data(
-            "inventory_report/data/inventory.json", "completo"
-        )
-    )
-    print(
-        Inventory.import_data("inventory_report/data/inventory.xml", "simples")
-    )
-    print(
-        Inventory.import_data(
-            "inventory_report/data/inventory.xml", "completo"
-        )
-    )

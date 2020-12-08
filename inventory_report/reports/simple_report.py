@@ -61,7 +61,3 @@ class SimpleReport:
 Data de validade mais próxima: {min(valid_list)}
 Empresa com maior quantidade de produtos estocados: {company_stock}
 """
-
-
-if __name__ == "__main__":
-    print(SimpleReport.generate(teste))
