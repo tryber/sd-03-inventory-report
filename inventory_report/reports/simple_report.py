@@ -4,19 +4,13 @@ from datetime import datetime
 class SimpleReport:
     @classmethod
     def generate(cls, data):
-        qty_products_per_company = cls.get_companies_dict(data)
-        company_with_more_products = {"name": "", "qty": 0}
         manufacturing_date = cls.get_manufacturing_date(data)
         due_date = cls.get_due_date(data)
-        for company in qty_products_per_company.items():
-            if company[1] > company_with_more_products["qty"]:
-                company_with_more_products["qty"] = company[1]
-                company_with_more_products["name"] = company[0]
-        company_name = company_with_more_products["name"]
+        company = cls.get_company_name(data)
         report = f"""
             Data de fabricação mais antiga: {manufacturing_date}
             Data de validade mais próxima: {due_date}
-            Empresa com maior quantidade de produtos estocados: {company_name}
+            Empresa com maior quantidade de produtos estocados: {company}
         """
         return report
 
@@ -54,3 +48,13 @@ class SimpleReport:
             if name not in qty_products_per_company:
                 qty_products_per_company[name] = 1
         return qty_products_per_company
+
+    @classmethod
+    def get_company_name(cls, data):
+        company_with_more_products = {"name": "", "qty": 0}
+        qty_products_per_company = cls.get_companies_dict(data)
+        for company in qty_products_per_company.items():
+            if company[1] > company_with_more_products["qty"]:
+                company_with_more_products["qty"] = company[1]
+                company_with_more_products["name"] = company[0]
+        return company_with_more_products["name"]
