@@ -15,14 +15,15 @@ class Inventory:
     @classmethod
     def import_data(cls, path, format):
         list = []
-        obj = {}
         if path.endswith(".csv"):
             with open(path, "r") as file:
                 content = csv.reader(file, delimiter=",", quotechar='"')
                 header, *data = content
                 for element in data:
+                    obj = {}
                     for i in range(len(header)):
-                        obj[header[i]] = element[i]
+                        teste = header[i]
+                        obj[teste] = element[i]
                     list.append(obj)
         if path.endswith(".json"):
             with open(path) as file:
@@ -62,9 +63,9 @@ class Inventory:
                     "instrucoes_de_armazenamento": instrucoes_de_armazenamento,
                 }
                 list.append(obj)
-        if format == 'simples':
+        if format == "simples":
             return SimpleReport.generate(list)
-        elif format == 'completo':
+        elif format == "completo":
             return CompleteReport.generate(list)
 
 
