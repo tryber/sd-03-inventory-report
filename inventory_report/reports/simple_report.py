@@ -1,4 +1,3 @@
-from json import load
 from datetime import datetime
 import collections
 
@@ -41,6 +40,7 @@ test = [
         },
     ]
 
+
 class SimpleReport:
     @staticmethod
     def format_date(date):
@@ -51,8 +51,6 @@ class SimpleReport:
     def give_earliest_due_date(self, doc, holder):
         due_date = self.format_date(doc["data_de_validade"])
         earlisest = self.format_date(holder["earliest_due_date"])
-        print(f'{due_date=}')
-        print(f'{earlisest=}')
         if (
             earlisest > due_date
             and due_date >= datetime.now()
