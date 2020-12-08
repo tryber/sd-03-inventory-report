@@ -24,13 +24,9 @@ class Inventory:
                     for i in range(len(header)):
                         obj[header[i]] = element[i]
                     list.append(obj)
-                print(list)
-            return list
         if path.endswith(".json"):
             with open(path) as file:
                 list = json.load(file)
-                print(list)
-            return list
         if path.endswith(".xml"):
             doc = parse(path)
             records = doc.getElementsByTagName("record")
@@ -66,10 +62,10 @@ class Inventory:
                     "instrucoes_de_armazenamento": instrucoes_de_armazenamento,
                 }
                 list.append(obj)
-            if format == 'simples':
-                return SimpleReport.generate(list)
-            elif format == 'completo':
-                return CompleteReport.generate(list)
+        if format == 'simples':
+            return SimpleReport.generate(list)
+        elif format == 'completo':
+            return CompleteReport.generate(list)
 
 
 # https://www.kite.com/python/docs/xml.dom.minidom.Document.firstChild
