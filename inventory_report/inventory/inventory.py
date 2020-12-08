@@ -25,10 +25,10 @@ class Inventory:
                         teste = header[i]
                         obj[teste] = element[i]
                     list.append(obj)
-        if path.endswith(".json"):
+        elif path.endswith(".json"):
             with open(path) as file:
                 list = json.load(file)
-        if path.endswith(".xml"):
+        elif path.endswith(".xml"):
             doc = parse(path)
             records = doc.getElementsByTagName("record")
             for record in records:
@@ -63,7 +63,7 @@ class Inventory:
                     "instrucoes_de_armazenamento": instrucoes_de_armazenamento,
                 }
                 list.append(obj)
-        if format == "simples":
+        elif format == "simples":
             return SimpleReport.generate(list)
         elif format == "completo":
             return CompleteReport.generate(list)
