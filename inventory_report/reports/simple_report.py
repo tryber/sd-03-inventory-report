@@ -32,6 +32,7 @@ class SimpleReport:
         )
 
 
+# para testes locais
 """ teste_local = [
     {
         "id": "1",
