@@ -22,5 +22,4 @@ def main():
     _, file_name, mode, *_ = sys.argv
 
     inventory = get_inventory(file_name)
-    inventory.import_data(file_name)
-    print(inventory.generate(mode))
+    print(inventory.import_data(file_name, mode))
