@@ -7,19 +7,21 @@ class CompleteReport:
     def generate(self, data):
         major_stock = ""
         nearest_expire = ""
-        new_data = sorted(data, key=lambda e: e["data_de_fabricacao"])
-        oldest = new_data[0]["data_de_fabricacao"]
+        data.sort(key=lambda e: e["data_de_fabricacao"])
+        oldest = data[0]["data_de_fabricacao"]
+        new_list = []
 
         def fun(e):
             flake = datetime.strptime(e["data_de_validade"], '%Y-%m-%d')
             if flake.date() > date.today():
                 return True
             return False
-        filtered = list(filter(fun, data))
-        filtered.sort(
+        filtered = filter(fun, data)
+        filtered_list = list(filtered)
+        filtered_list.sort(
             key=lambda e: e["data_de_validade"])
-        nearest_expire = filtered[0]["data_de_validade"]
-        new_list = []
+        nearest_expire = filtered_list[0]["data_de_validade"]
+
         for e in data:
             new_list.append(e["nome_da_empresa"])
         stock_list = list(dict(Counter(new_list)).items())
@@ -28,12 +30,13 @@ class CompleteReport:
         s1 = f"Data de fabricação mais antiga: {oldest}\n"
         s2 = f"Data de validade mais próxima: {nearest_expire}\n"
         s3 = "Empresa com maior quantidade de produtos estocados:"
-        s4 = f" {major_stock}\n"
+        s4 = f" {major_stock}\n\n"
         s5 = "Produtos Estocados por empresa: \n"
         st = s1 + s2 + s3 + s4 + s5
         for i in range(len(stock_list)):
             st = st + f"- {stock_list[i][0]}: {stock_list[i][1]}\n"
         return st
+
 # test_list = [
 #         {
 #             "id": 1,
