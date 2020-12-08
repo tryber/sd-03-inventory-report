@@ -1,4 +1,4 @@
-from importer import Importer
+from inventory_report.importer.importer import Importer
 from xml.etree import ElementTree
 
 
@@ -18,3 +18,7 @@ class XmlImporter(Importer):
 
         else:
             raise ValueError("Arquivo inválido")
+
+
+if __name__ == "__main__":
+    print(XmlImporter.import_data('inventory_report/data/inventory.xml'))

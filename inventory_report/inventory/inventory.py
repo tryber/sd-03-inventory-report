@@ -40,11 +40,11 @@ class Inventory:
             prod_list = cls.read_csv(path)
         elif path.endswith(".json"):
             prod_list = cls.read_json(path)
-        elif path.endswith(".xml"):
+        else:
             prod_list = cls.read_xml(path)
         if rel_type == "simples":
             return SimpleReport.generate(prod_list)
-        if rel_type == "completo":
+        else:
             return CompleteReport.generate(prod_list)
 
 
