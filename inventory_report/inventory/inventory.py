@@ -14,6 +14,11 @@ def getNodeText(node):
 class Inventory:
     @classmethod
     def import_data(cls, path, format):
+        report = cls.generate_list(path)
+        return cls.generate_report(report, format)
+
+    @classmethod
+    def generate_list(cls, path):
         list = []
         if path.endswith(".csv"):
             with open(path, "r") as file:
@@ -63,7 +68,11 @@ class Inventory:
                     "instrucoes_de_armazenamento": instrucoes_de_armazenamento,
                 }
                 list.append(obj)
-        elif format == "simples":
+        return list
+
+    @classmethod
+    def generate_report(cls, list, format):
+        if format == "simples":
             return SimpleReport.generate(list)
         elif format == "completo":
             return CompleteReport.generate(list)
