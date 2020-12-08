@@ -1,8 +1,21 @@
-from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
-import csv
-import json
+from inventory_report.reports.simple_report import SimpleReport
 import xml.etree.ElementTree as ET
+import json
+import csv
+
+
+def treatxml(file_path):
+    with open(f"../{file_path}") as xml_file:
+        root = ET.parse(xml_file).getroot()
+        records = root.findall('record')
+        output = []
+        for record in records:
+            dictionary = {}
+            for element in record:
+                dictionary[element.tag] = element.text
+            output.append(dictionary)
+        return output
 
 
 class Inventory:
@@ -14,26 +27,18 @@ class Inventory:
     def import_data(self, file_path, report_type):
 
         if (file_path.endswith(".csv")):
-            with open(file_path) as csv_file:
+            with open(f"../{file_path}") as csv_file:
                 csv_dict = csv.DictReader(csv_file, delimiter=",")
                 output = []
                 for dict in csv_dict:
                     output.append(dict)
 
         if (file_path.endswith(".json")):
-            with open(file_path) as json_file:
+            with open(f"../{file_path}") as json_file:
                 output = json.load(json_file)
 
         if (file_path.endswith(".xml")):
-            with open(file_path) as xml_file:
-                root = ET.parse(xml_file).getroot()
-                records = root.findall('record')
-                output = []
-                for record in records:
-                    dictionary = {}
-                    for element in record:
-                        dictionary[element.tag] = element.text
-                    output.append(dictionary)
+            output = treatxml(file_path)
 
         if report_type == 'simples':
             return(SimpleReport.generate(output))
