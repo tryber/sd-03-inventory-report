@@ -12,26 +12,23 @@ class Inventory:
     @classmethod
     def import_data(self, file_path, report_type):
         if (file_path.endswith(".csv")):
-            with open(file_path) as csv_file:
+            with open(f"../{file_path}") as csv_file:
                 csv_dict = csv.DictReader(csv_file, delimiter=",")
                 csv_react = []
                 for dict in csv_dict:
                     csv_react.append(dict)
                 if report_type == 'simples':
-                    print(SimpleReport(csv_react).generate())
+                    return(SimpleReport.generate(csv_react))
                 elif report_type == 'completo':
-                    print(CompleteReport(csv_react).generate())
+                    return(CompleteReport.generate(csv_react))
                 else:
                     return('Opção inválida')
         if (file_path.endswith(".json")):
-            with open(file_path) as json_file:
+            with open(f"../{file_path}") as json_file:
                 j_file = json.load(json_file)
                 if report_type == 'simples':
-                    print(SimpleReport(j_file).generate())
+                    return(SimpleReport.generate(j_file))
                 elif report_type == 'completo':
-                    print(CompleteReport(j_file).generate())
+                    return(CompleteReport.generate(j_file))
                 else:
                     return('Opção inválida')
-
-
-# Inventory.import_data('../data/inventory.json', 'simples')
