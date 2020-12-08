@@ -1,4 +1,8 @@
-class Importer:
+from abc import ABC, abstractmethod
+
+
+class Importer(ABC):
     @classmethod
-    def teste(cls):
-        print("teste")
+    @abstractmethod
+    def import_data(cls, file_path):
+        raise NotImplementedError
