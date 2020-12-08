@@ -7,16 +7,17 @@ class SimpleReport:
         manufacturing_date = cls.get_manufacturing_date(data)
         due_date = cls.get_due_date(data)
         company = cls.get_company_name(data)
-        report = f"""
-            Data de fabricação mais antiga: {manufacturing_date}
-            Data de validade mais próxima: {due_date}
-            Empresa com maior quantidade de produtos estocados: {company}
-        """
+        report = (
+            f"Data de fabricação mais antiga: {manufacturing_date}\n"
+            f"Data de validade mais próxima: {due_date}\n"
+            f"Empresa com maior quantidade de produtos estocados: {company}\n"
+        )
+        print(report)
         return report
 
     @classmethod
     def get_manufacturing_date(cls, data):
-        manufacturing_date = datetime.now().strftime("%Y-%m-%d")
+        manufacturing_date = data[0]["data_de_fabricacao"]
         for product in data:
             if datetime.strptime(
                 product["data_de_fabricacao"], "%Y-%m-%d"
@@ -26,12 +27,12 @@ class SimpleReport:
 
     @classmethod
     def get_due_date(cls, data):
-        due_date = datetime.now().strftime("%Y-%m-%d")
+        due_date = data[0]["data_de_validade"]
         for product in data:
             if datetime.strptime(
-                product["data_de_fabricacao"], "%Y-%m-%d"
+                product["data_de_validade"], "%Y-%m-%d"
             ) > datetime.now() and datetime.strptime(
-                product["data_de_fabricacao"], "%Y-%m-%d"
+                product["data_de_validade"], "%Y-%m-%d"
             ) < datetime.strptime(
                 due_date, "%Y-%m-%d"
             ):
