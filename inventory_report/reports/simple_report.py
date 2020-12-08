@@ -12,7 +12,6 @@ class SimpleReport:
             f"Data de validade mais próxima: {due_date}\n"
             f"Empresa com maior quantidade de produtos estocados: {company}\n"
         )
-        print(report)
         return report
 
     @classmethod
