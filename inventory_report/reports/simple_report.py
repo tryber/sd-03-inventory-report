@@ -14,13 +14,12 @@ class SimpleReport:
         new_list = []
 
         def check_validation_date(val):
-            flake = datetime.strptime(val["data_de_validade"], "%Y-%m-%d")
-            if flake.date() > date.today():
+            formated = datetime.strptime(val["data_de_validade"], "%Y-%m-%d")
+            if formated.date() > date.today():
                 return True
             return False
 
-        filtered = filter(check_validation_date, data)
-        filtered_list = list(filtered)
+        filtered_list = list(filter(check_validation_date, data))
         filtered_list.sort(key=lambda e: e["data_de_validade"])
         nearest_expire = filtered_list[0]["data_de_validade"]
 
