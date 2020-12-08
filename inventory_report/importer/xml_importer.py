@@ -3,7 +3,7 @@ import xml.etree.ElementTree as ET
 
 
 class XmlImporter(Importer):
-    def import_data(cls, filepath):
+    def import_data(filepath):
         if not filepath.endswith('.xml'):
             raise ValueError('Arquivo inválido')
         with open(filepath) as xml_file:
@@ -15,4 +15,4 @@ class XmlImporter(Importer):
                 for element in record:
                     dictionary[element.tag] = element.text
                 output.append(dictionary)
-        return output
+            return output

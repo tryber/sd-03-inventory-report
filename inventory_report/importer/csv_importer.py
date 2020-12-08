@@ -3,7 +3,7 @@ import csv
 
 
 class CsvImporter(Importer):
-    def import_data(cls, filepath):
+    def import_data(filepath):
         if not filepath.endswith('.csv'):
             raise ValueError('Arquivo inválido')
         with open(filepath) as csv_file:
