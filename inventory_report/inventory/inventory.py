@@ -12,19 +12,19 @@ class Inventory:
 
     @staticmethod
     def treatcsv(path):
+        output = []
         with open(f"../{path}") as csv_file:
             csv_dict = csv.DictReader(csv_file, delimiter=",")
-            output = []
             for dict in csv_dict:
                 output.append(dict)
             return output
 
     @staticmethod
     def treatxml(path):
+        output = []
         with open(f"../{path}") as xml_file:
             root = ET.parse(xml_file).getroot()
             records = root.findall('record')
-            output = []
             for record in records:
                 dictionary = {}
                 for element in record:
@@ -32,9 +32,18 @@ class Inventory:
                 output.append(dictionary)
             return output
 
+    @staticmethod
+    def call_report(rep_type, output):
+        if rep_type == 'simples':
+            return(SimpleReport.generate(output))
+        elif rep_type == 'completo':
+            return(CompleteReport.generate(output))
+        else:
+            return('Opção inválida')
+
     @classmethod
     def import_data(self, file_path, report_type):
-
+        output = []
         if (file_path.endswith(".csv")):
             output = Inventory.treatcsv(file_path)
         elif (file_path.endswith(".json")):
@@ -43,9 +52,4 @@ class Inventory:
         elif (file_path.endswith(".xml")):
             output = Inventory.treatxml(file_path)
 
-        if report_type == 'simples':
-            return(SimpleReport.generate(output))
-        elif report_type == 'completo':
-            return(CompleteReport.generate(output))
-        else:
-            return('Opção inválida')
+        return Inventory.call_report(report_type, output)
