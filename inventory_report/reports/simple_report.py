@@ -41,12 +41,9 @@ class SimpleReport:
         }
 
         for doc in data:
-            print(doc)
-            print(cls)
-            print(holder)
-            cls.give_earliest_due_date(cls=cls, doc=doc, holder=holder)
-            cls.give_earliest_production_date(cls, doc, holder)
-            cls.count_company_products(cls, doc, companies_stock)
+            cls.give_earliest_due_date(doc=doc, holder=holder)
+            cls.give_earliest_production_date(doc, holder)
+            cls.count_company_products(doc, companies_stock)
 
         greater_stock_name = collections.Counter(
             companies_stock
@@ -60,11 +57,12 @@ class SimpleReport:
             "due": format_due,
             "companies": format_due,
             "bigger_stock": greater_stock_name,
+            "companies_stock": companies_stock,
         }
 
     @classmethod
     def generate(cls, data):
-        logs = cls.interate_over_data(cls, data=data)
+        logs = cls.interate_over_data(data=data)
         return f"""Data de fabricação mais antiga: {logs['production']}
 Data de validade mais próxima: {logs['due']}
 Empresa com maior quantidade de produtos estocados: {logs['bigger_stock']}
