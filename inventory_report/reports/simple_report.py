@@ -65,8 +65,7 @@ class SimpleReport:
     @classmethod
     def generate(cls, data):
         logs = cls.interate_over_data(cls, data=data)
-        log = f"""Data de fabricação mais antiga: {logs['production']}
+        return f"""Data de fabricação mais antiga: {logs['production']}
 Data de validade mais próxima: {logs['due']}
 Empresa com maior quantidade de produtos estocados: {logs['bigger_stock']}
 """
-        return log
