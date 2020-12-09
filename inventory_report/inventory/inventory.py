@@ -1,5 +1,6 @@
 from os import path
 import csv
+import json
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
 
@@ -22,6 +23,9 @@ class Inventory:
         new_list = []
         if ext == '.csv':
             Inventory.csv_parser(filepath, new_list)
+        elif ext == '.json':
+            with open(filepath) as file:
+                new_list = json.load(file)
         if report == 'simples':
             return SimpleReport.generate(new_list)
         else:
