@@ -12,22 +12,35 @@ class InventoryRefactor(Iterable):
         self.importer = importer
         self.data = []
 
-    def import_data(self, file_path, report_type):
-        if (file_path.endswith(".csv")):
-            self.data = CsvImporter(file_path)
+    @staticmethod
+    def treatcsv(path):
+        return CsvImporter(path)
 
-        if (file_path.endswith(".json")):
-            self.data = JsonImporter(file_path)
+    @staticmethod
+    def treatxml(path):
+        return XmlImporter(path)
 
-        if (file_path.endswith(".xml")):
-            self.data = XmlImporter(file_path)
-
-        if report_type == 'simples':
-            return(SimpleReport.generate(self.data))
-        elif report_type == 'completo':
-            return(CompleteReport.generate(self.data))
+    @staticmethod
+    def call_report(rep_type, output):
+        if rep_type == 'simples':
+            return(SimpleReport.generate(output))
+        elif rep_type == 'completo':
+            return(CompleteReport.generate(output))
         else:
             return('Opção inválida')
+
+    @classmethod
+    def import_data(self, file_path, report_type):
+        output = []
+        if (file_path.endswith(".csv")):
+            output = InventoryRefactor.treatcsv(file_path)
+        elif (file_path.endswith(".json")):
+            with open(file_path) as json_file:
+                output = JsonImporter(json_file)
+        elif (file_path.endswith(".xml")):
+            output = InventoryRefactor.treatxml(file_path)
+
+        return InventoryRefactor.call_report(report_type, output)
 
     def __iter__(self):
         return InventoryIterator(self.data)
