@@ -13,7 +13,7 @@ class Inventory:
     @staticmethod
     def treatcsv(path):
         output = []
-        with open(f"../{path}") as csv_file:
+        with open(path) as csv_file:
             csv_dict = csv.DictReader(csv_file, delimiter=",")
             for dict in csv_dict:
                 output.append(dict)
@@ -22,7 +22,7 @@ class Inventory:
     @staticmethod
     def treatxml(path):
         output = []
-        with open(f"../{path}") as xml_file:
+        with open(path) as xml_file:
             root = ET.parse(xml_file).getroot()
             records = root.findall('record')
             for record in records:
@@ -47,7 +47,7 @@ class Inventory:
         if (file_path.endswith(".csv")):
             output = Inventory.treatcsv(file_path)
         elif (file_path.endswith(".json")):
-            with open(f"../{file_path}") as json_file:
+            with open(file_path) as json_file:
                 output = json.load(json_file)
         elif (file_path.endswith(".xml")):
             output = Inventory.treatxml(file_path)
