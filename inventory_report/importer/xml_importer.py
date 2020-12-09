@@ -3,6 +3,7 @@ from inventory_report.importer.importer import Importer
 
 
 class XmlImporter(Importer):
+
     @classmethod
     def getNodeText(cls, node):
         return node.firstChild.nodeValue

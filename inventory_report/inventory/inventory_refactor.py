@@ -17,6 +17,7 @@ class InventoryRefactor(Iterable):
         self.data.extend(self.importer.import_data(path))
         return self.generate_report(self.data, format)
 
+    @classmethod
     def generate_report(cls, list, format):
         if format == "simples":
             return SimpleReport.generate(list)

@@ -2,6 +2,7 @@ from datetime import datetime
 
 
 class SimpleReport:
+
     @classmethod
     def generate(cls, data):
         manufacturing_date = cls.get_manufacturing_date(data)

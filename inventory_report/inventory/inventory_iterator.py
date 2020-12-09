@@ -2,6 +2,7 @@ from collections.abc import Iterator
 
 
 class InventoryIterator(Iterator):
+
     def __init__(self, iterable):
         self._iterable = iterable
         self._position = 0
