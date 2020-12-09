@@ -44,7 +44,7 @@ class SimpleReport:
             print(doc)
             print(cls)
             print(holder)
-            cls.give_earliest_due_date(cls, doc, holder)
+            cls.give_earliest_due_date(cls=cls, doc=doc, holder=holder)
             cls.give_earliest_production_date(cls, doc, holder)
             cls.count_company_products(cls, doc, companies_stock)
 
