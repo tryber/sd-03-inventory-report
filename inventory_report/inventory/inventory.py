@@ -7,11 +7,11 @@ from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
 
 
-def getNodeText(node):
-    return node.firstChild.nodeValue
-
-
 class Inventory:
+
+    @classmethod
+    def getNodeText(cls, node):
+        return node.firstChild.nodeValue
 
     @classmethod
     def import_data(cls, path, format):
@@ -43,23 +43,23 @@ class Inventory:
         doc = parse(path)
         records = doc.getElementsByTagName("record")
         for record in records:
-            id = getNodeText(record.getElementsByTagName("id")[0])
-            nome_do_produto = getNodeText(
+            id = cls.getNodeText(record.getElementsByTagName("id")[0])
+            nome_do_produto = cls.getNodeText(
                 record.getElementsByTagName("nome_do_produto")[0]
             )
-            nome_da_empresa = getNodeText(
+            nome_da_empresa = cls.getNodeText(
                 record.getElementsByTagName("nome_da_empresa")[0]
             )
-            data_de_fabricacao = getNodeText(
+            data_de_fabricacao = cls.getNodeText(
                 record.getElementsByTagName("data_de_fabricacao")[0]
             )
-            data_de_validade = getNodeText(
+            data_de_validade = cls.getNodeText(
                 record.getElementsByTagName("data_de_validade")[0]
             )
-            numero_de_serie = getNodeText(
+            numero_de_serie = cls.getNodeText(
                 record.getElementsByTagName("numero_de_serie")[0]
             )
-            instrucoes_de_armazenamento = getNodeText(
+            instrucoes_de_armazenamento = cls.getNodeText(
                 record.getElementsByTagName("instrucoes_de_armazenamento")[0]
             )
             obj = {
