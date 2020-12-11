@@ -16,6 +16,7 @@ def main():
     elif p1.endswith('.xml'):
         ftd = InventoryRefactor(XmlImporter).import_data(p1, p2)
 
+    print(ftd)
     return ftd
 
 
