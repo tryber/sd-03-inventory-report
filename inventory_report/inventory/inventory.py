@@ -17,7 +17,6 @@ class Inventory:
                 for i in range(len(row)):
                     current[header[i]] = row[i]
                 data_list.append(current)
-    
 
     @staticmethod
     def xml_parser(filepath, data_list):
@@ -44,5 +43,3 @@ class Inventory:
             return SimpleReport.generate(new_list)
         else:
             return CompleteReport.generate(new_list)
-
-
