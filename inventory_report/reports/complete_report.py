@@ -13,4 +13,3 @@ class CompleteReport(SimpleReport):
         for company in products_by_company:
             report += f"- {company[0]['nome_da_empresa']}: {len(company)}\n"
         return report
-
