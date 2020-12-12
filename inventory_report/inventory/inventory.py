@@ -1,7 +1,6 @@
 from inventory_report.reports.complete_report import CompleteReport
 from inventory_report.reports.simple_report import SimpleReport
 import csv
-import pprint
 import os
 import json
 from parsel import Selector
