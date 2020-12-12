@@ -291,7 +291,7 @@ Os arquivos **XML** seguem o seguinte modelo:
    Data de fabricação mais antiga: YYYY-MM-DD
    Data de validade mais próxima: YYYY-MM-DD
    Empresa com maior quantidade de produtos estocados: NOME DA EMPRESA
-   Produtos estocados por empresa:
+   Produtos Estocados por empresa:
    - Physicians Total Care, Inc.: QUANTIDADE
    - Newton Laboratories, Inc.: QUANTIDADE
    - Forces of Nature: QUANTIDADE
