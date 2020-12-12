@@ -1,10 +1,8 @@
 from datetime import datetime
-import pprint
 import collections
 
 
 class SimpleReport:
-
     @classmethod
     def group_list_by_key(cls, listToGroup, key):
         data = [elem[key] for elem in listToGroup]
