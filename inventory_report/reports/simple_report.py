@@ -4,8 +4,8 @@ from datetime import datetime
 
 class SimpleReport:
 
-    @staticmethod
-    def group_list_by_key(listToGroup, key):
+    @classmethod
+    def group_list_by_key(cls, listToGroup, key):
         data = []
         for _key, group in itertools.groupby(
             listToGroup, lambda item: item[key]
