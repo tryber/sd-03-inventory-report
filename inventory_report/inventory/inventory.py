@@ -46,3 +46,4 @@ class Inventory:
             return SimpleReport.generate(data)
         else:
             return CompleteReport.generate(data)
+
