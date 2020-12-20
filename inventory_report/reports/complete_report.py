@@ -17,17 +17,20 @@ class CompleteReport:
             elem
             for elem in dates_from_today
         ])
-        more_times_appear = Counter([
-            elem["nome_da_empresa"] for elem in dict
-                                      ]).most_common()
+        company_list = Counter([
+            product["nome_da_empresa"] for product in dict
+        ])
+        company_with_most_products = company_list.most_common(1)[0]
+
+        phrase = ""
+        for company in company_list:
+            phrase = phrase + f"- {company}: {company_list[company]}\n"
         return (f'Data de fabricação mais antiga:'
                 f' {min_fabricate_date["data_de_fabricacao"]}\n'
                 f'Data de validade mais próxima: '
                 f'{near_date}\n'
                 f'Empresa com maior quantidade de produtos estocados: '
-                f'{more_times_appear[0][0]}\n\n'
+                f'{company_with_most_products[0]}\n\n'
                 f'Produtos Estocados por empresa: \n'
-                f'- {more_times_appear[1][0]}: {more_times_appear[1][1]}\n'
-                f'- {more_times_appear[0][0]}: {more_times_appear[0][1]}\n'                
-                f'- {more_times_appear[2][0]}: {more_times_appear[2][1]}\n'
+                f"{phrase}"
                 )
