@@ -5,6 +5,7 @@ from inventory_report.importer.xml_importer import XmlImporter
 from inventory_report.inventory.inventory_refactor import InventoryRefactor
 import pytest
 
+
 DIST = {
           'id': '1',
           'nome_do_produto': 'Nicotine Polacrilex',
