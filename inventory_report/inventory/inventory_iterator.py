@@ -1,2 +1,4 @@
 class InventoryIterator:
-    pass
+    @classmethod
+    def __iter__(data):
+        print('Iterator')
