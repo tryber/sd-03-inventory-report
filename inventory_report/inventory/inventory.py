@@ -71,7 +71,3 @@ class Inventory:
             return SimpleReport.generate(dataParsed)
         else:
             return CompleteReport.generate(dataParsed)
-
-
-class Teste:
-    pass
