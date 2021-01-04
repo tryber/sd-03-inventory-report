@@ -1,0 +1,2 @@
+class JsonImporter:
+    pass
