@@ -11,4 +11,3 @@ class CompleteReport(SimpleReport):
             amend_log += f"- {name}: {qnt}\n"
         complete_report = simple_report + '\n' + amend_log
         return complete_report
-
