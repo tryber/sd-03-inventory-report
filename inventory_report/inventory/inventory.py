@@ -1,41 +1,48 @@
-import csv
-import json
-import xml.etree.ElementTree as ET
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
+from xml.etree import ElementTree
+import csv
+import json
 
 
 class Inventory:
-    @staticmethod
-    def csv_reader(file_name):
-        with open(file_name, "r") as file:
-            read = csv.DictReader(file, delimiter=",")
-            return [
-                {
-                    "nome_da_empresa": row["nome_da_empresa"],
-                    "data_de_fabricacao": row["data_de_fabricacao"],
-                    "data_de_validade": row["data_de_validade"],
-                }
-                for row in read
-            ]
+    @classmethod
+    def read_csv(cls, path):
+        prod_list = []
+        with open(path) as file:
+            prod_csv = csv.DictReader(file, delimiter=",", quotechar='"')
+            for elem in prod_csv:
+                prod_list.append(elem)
+        return prod_list
 
     @classmethod
-    def import_data(cls, file_name, mode):
-        if file_name.endswith(".csv"):
-            data = cls.csv_reader(file_name)
-        elif file_name.endswith(".json"):
-            data = cls.json_reader(file_name)
-        elif file_name.endswith(".xml"):
-            data = cls.xml_reader(file_name)
+    def read_json(cls, path):
+        with open(path) as file:
+            prod_list = json.load(file)
+            return prod_list
 
-        if mode == "simples":
-            return SimpleReport.generate(data)
-        return CompleteReport.generate(data)
+    @classmethod
+    def read_xml(cls, path):
+        root = ElementTree.parse(path).getroot()
+        records = root.findall("record")
+        records_list = []
+        for elem in records:
+            temp_dict = {}
+            for e in elem:
+                temp_dict[e.tag] = e.text
+            records_list.append(temp_dict)
+        return records_list
 
-
-if __name__ == "__main__":
-    print(
-        Inventory.import_data(
-            "inventory_report/data/inventory.xml", "completo"
-        )
-    )
+    @classmethod
+    def import_data(cls, path, rel_type):
+        prod_list = []
+        if path.endswith(".csv"):
+            prod_list = cls.read_csv(path)
+        elif path.endswith(".json"):
+            prod_list = cls.read_json(path)
+        else:
+            prod_list = cls.read_xml(path)
+        if rel_type == "simples":
+            return SimpleReport.generate(prod_list)
+        else:
+            return CompleteReport.generate(prod_list)
