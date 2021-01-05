@@ -13,7 +13,7 @@ class CompleteReport(SimpleReport):
         return f"{relatorio_simples}\n{produtos_estocados}"
 
 
-# para testes locais complete report
+# para testes locais complete inventory report
 """ teste_local = [
     {
         "id": "1",
