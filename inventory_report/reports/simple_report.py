@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from collections import Counter
 from datetime import date, datetime
 
@@ -32,11 +30,11 @@ class SimpleReport:
         )[0][0]
 
         oldest_fabrication_string = (
-            "Data de fabricação mais antiga: {} \n".format(oldest)
+            "Data de fabricação mais antiga: {}\n".format(oldest)
         )
 
         nearest_expire_string = (
-            "Data de validade mais próxima: {} \n".format(nearest_expire)
+            "Data de validade mais próxima: {}\n".format(nearest_expire)
         )
         major_stock_string = (
             "Empresa com maior quantidade"

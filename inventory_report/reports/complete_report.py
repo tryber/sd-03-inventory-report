@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from datetime import datetime, date
 from collections import Counter
 
@@ -29,16 +27,16 @@ class CompleteReport:
             company_dict, key=lambda el: el[1], reverse=True)[0][0]
 
         oldest_fabrication_string = (
-            "Data de fabricação mais antiga: {} \n".format(oldest)
+            "Data de fabricação mais antiga: {}\n".format(oldest)
         )
 
         nearest_expire_string = (
-            "Data de validade mais próxima: {} \n".format(nearest_expire)
+            "Data de validade mais próxima: {}\n".format(nearest_expire)
         )
         major_stock_string = (
             "Empresa com maior quantidade"
             + " de produtos estocados:"
-            + " {}\n".format(major_stock)
+            + " {}\n\n".format(major_stock)
             )
 
         stock_for_company_string = "Produtos Estocados por empresa: \n"
