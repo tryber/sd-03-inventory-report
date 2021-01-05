@@ -12,4 +12,4 @@ else:
     if sys.argv[1].endswith(".json"):
         print(Inventory(JsonImporter).import_data(sys.argv[1], sys.argv[2]))
     if sys.argv[1].endswith(".xml"):
-        print(Inventory(XmlImporter).import_data(sys.argv[1], sys.argv[2]))]
+        print(Inventory(XmlImporter).import_data(sys.argv[1], sys.argv[2]))
