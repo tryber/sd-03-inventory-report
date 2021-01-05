@@ -18,11 +18,12 @@ class SimpleReport:
             ],
             key=itemgetter("data_de_validade"),
         )["data_de_validade"]
-        most_products_company_name = max(
+        comp = max(
             Counter(prod["nome_da_empresa"] for prod in products)
         )
+        
         result = ""
         result += f"Data de fabricação mais antiga: {oldest_fabrication}\n"
         result += f"Data de validade mais próxima: {nearest_shelf_life}\n"
-        result += f"Empresa com maior quantidade de produtos estocados: {most_products_company_name}\n"
+        result += f"Empresa com maior quantidade de produtos estocados: {comp}\n"
         return result
