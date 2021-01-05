@@ -9,5 +9,6 @@ class CompleteReport(SimpleReport):
         amend_log = "Produtos Estocados por empresa: \n"
         for name, qnt in companies.items():
             amend_log += f"- {name}: {qnt}\n"
-        complete_report = simple_report + "\n" + amend_log
+        complete_report = simple_report + '\n' + amend_log
         return complete_report
+

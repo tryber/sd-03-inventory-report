@@ -24,11 +24,11 @@ class SimpleReport:
             holder["earliest_production_date"] = production_date
 
     @classmethod
-    def count_company_products(cls, doc, companies_stock):
-        if companies_stock.get(doc["nome_da_empresa"]) is not None:
-            companies_stock[doc["nome_da_empresa"]] += 1
+    def count_company_products(cls, holder, companies_stock):
+        if companies_stock.get(holder["nome_da_empresa"]) is not None:
+            companies_stock[holder["nome_da_empresa"]] += 1
         else:
-            companies_stock[doc["nome_da_empresa"]] = 1
+            companies_stock[holder["nome_da_empresa"]] = 1
 
     @classmethod
     def interate_over_data(cls, data):
