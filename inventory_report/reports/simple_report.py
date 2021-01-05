@@ -4,7 +4,7 @@ from collections import Counter
 
 class SimpleReport:
     @staticmethod
-    def company_separator(self, prodList):
+    def company_counter(self, prodList):
         companies = [elem["nome_da_empresa"] for elem in prodList]
         companies_counter = Counter(companies)
         return companies_counter
@@ -18,7 +18,9 @@ class SimpleReport:
             for elem in products
             if today < datetime.strptime(elem["data_de_validade"], "%Y-%m-%d")
         ]
-        company_stock = cls.company_separator(cls, products).most_common(1)[0][0]
+        company_stock = cls.company_counter(cls, products).most_common(1)[0][
+            0
+        ]
         return f"""Data de fabricação mais antiga: {min(manufactured_list)}
 Data de validade mais próxima: {min(valid_list)}
 Empresa com maior quantidade de produtos estocados: {company_stock}
