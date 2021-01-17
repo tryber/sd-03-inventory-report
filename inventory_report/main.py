@@ -8,14 +8,14 @@ from inventory_report.importer.xml_importer import XmlImporter
 def main():
     if len(sys.argv) != 3:
         print("Verifique os argumentos", file=sys.stderr)
-    
+
     if sys.argv[1].endswith(".csv"):
         data = InventoryRefactor(CsvImporter).import_data(
             sys.argv[1], sys.argv[2])
 
         print(data)
         return data
-    
+
     if sys.argv[1].endswith(".json"):
         data = InventoryRefactor(JsonImporter).import_data(
             sys.argv[1], sys.argv[2])
