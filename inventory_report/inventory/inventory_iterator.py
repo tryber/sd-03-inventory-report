@@ -1,7 +1,7 @@
-from collections.abc import inventory_iterator
+from collections.abc import Iterator
 
 
-class InventoryIarator(Iterator):
+class InventoryIterator(Iterator):
     def __init__(self, stock):
         self.stock = stock
         self._position = 0
@@ -12,5 +12,5 @@ class InventoryIarator(Iterator):
         except IndexError:
             raise StopIteration()
         else:
-            self._position +=1
+            self._position += 1
             return value
