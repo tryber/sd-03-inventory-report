@@ -1,7 +1,7 @@
 from inventory_report.reports.simple_report import SimpleReport
 
 
-class CompleteReport(SimpleReport):
+class CompleteReport:
     @classmethod
     def get_complete_list(cls):
         list_companies = []
@@ -13,8 +13,8 @@ class CompleteReport(SimpleReport):
             list_companies.append(value["nome_da_empresa"])
         for company in list_companies:
             frequency = list_companies.count(company)
-            if value not in single_list:
-                list_companies.append(company)
+            if company not in single_list:
+                single_list.append(company)
                 list_repeticions.append(frequency)
 
         for company in single_list:
@@ -26,4 +26,4 @@ class CompleteReport(SimpleReport):
         cls.stock = stock
         cls.get_complete_list()
         simple_response = SimpleReport.generate(stock)
-        return (simple_response + cls.initial_str)
+        return (f"{simple_response}\n{cls.initial_str}")

@@ -48,7 +48,7 @@ class Inventory:
 
     @classmethod
     def import_data(cls, path, choice):
-        data = cls.csv_converter(path)
+        data = cls.get_type(path)
 
         if choice == "simples":
             return SimpleReport.generate(data)

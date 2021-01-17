@@ -7,12 +7,12 @@ class SimpleReport:
         cls.older = ''
         for value in cls.stock:
             if cls.older == '':
-                cls.older = value["data_de_fabricação"]
+                cls.older = value["data_de_fabricacao"]
             elif (
                 datetime.strptime(cls.older, "%Y-%m-%d")
-                > datetime.strptime(value["data_de_fabricação"], "%Y-%m-%d")
+                > datetime.strptime(value["data_de_fabricacao"], "%Y-%m-%d")
             ):
-                cls.older = value["data_de_fabricação"]
+                cls.older = value["data_de_fabricacao"]
 
     @classmethod
     def get_expire_date(cls):
