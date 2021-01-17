@@ -4,6 +4,7 @@ import xml.etree.ElementTree as ET
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
 
+
 class Inventory:
     @classmethod
     def csv_converter(cls, path):
@@ -12,7 +13,7 @@ class Inventory:
             data = [value for value in csv_dict]
 
         return data
-    
+
     @classmethod
     def json_converter(cls, path):
         with open(path, "r") as file:

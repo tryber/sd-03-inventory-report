@@ -5,7 +5,6 @@
 # from inventory_report.importer.xml_importer import XmlImporter
 
 
-
 # class Inventory:
 #     @classmethod
 #     def get_type(cls, path):

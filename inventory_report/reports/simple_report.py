@@ -1,5 +1,6 @@
 from datetime import datetime, date
 
+
 class SimpleReport:
     @classmethod
     def get_manufactering_date(cls):
