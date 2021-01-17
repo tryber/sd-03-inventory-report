@@ -1,26 +1,22 @@
-# from inventory_report.reports.simple_report import SimpleReport
-# from inventory_report.reports.complete_report import CompleteReport
-# from inventory_report.importer.csv_importer import CsvImporter
-# from inventory_report.importer.json_importer import JsonImporter
-# from inventory_report.importer.xml_importer import XmlImporter
+from collections.abc import Iterable
+from inventory_report.reports.simple_report import SimpleReport
+from inventory_report.reports.complete_report import CompleteReport
+from inventory_report.inventory.inventory_report import IventoryIterator
 
 
-# class Inventory:
-#     @classmethod
-#     def get_type(cls, path):
-#         data = []
-#         if path.endswith(".csv"):
-#             data = CsvImporter.import_data(path)
-#         elif path.endswith(".csv"):
-#             data = JsonImporter.import_data(path)
-#         else:
-#             data = XmlImporter.import_data(path)
-#         return data
+class InventoryRefactor(Iterable):
+    @classmethod
+    def __init__ (cls, path):
+        self.data = []
+        self.importer = importer
 
-#     @classmethod
-#     def import_data(cls, path, choice):
-#         data = cls.csv_converter(path)
-#         if choice == "simples":
-#             return SimpleReport.generate(data)
-#         else:
-#             return CompleteReport.generate(data)
+    def __iter__(self):
+        return InventoryIterator(self.data)
+
+    @classmethod
+    def import_data(self, path, choice):
+        self.data = [*self.data, *self.importer.import_data(path)]
+        if choice == "simples":
+            return SimpleReport.generate(self.data)
+        else:
+            return CompleteReport.generate(self.data)

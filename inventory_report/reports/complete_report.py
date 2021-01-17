@@ -1,7 +1,7 @@
 from inventory_report.reports.simple_report import SimpleReport
 
 
-Class CompleteReport(SimpleReport):
+class CompleteReport(SimpleReport):
     @classmethod
     def get_complete_list(cls):
         list_companies = []
