@@ -10,19 +10,22 @@ def main():
         print("Verifique os argumentos", file=sys.stderr)
 
     if sys.argv[1].endswith(".csv"):
-        data = InventoryRefactor(CsvImporter).import_data(sys.argv[1], sys.argv[2])
+        data = InventoryRefactor(CsvImporter).import_data(
+            sys.argv[1], sys.argv[2])
 
         print(data)
         return data
 
     if sys.argv[1].endswith(".json"):
-        data = InventoryRefactor(JsonImporter).import_data(sys.argv[1], sys.argv[2])
+        data = InventoryRefactor(JsonImporter).import_data(
+            sys.argv[1], sys.argv[2])
 
         print(data)
         return data
 
     if sys.argv[1].endswith(".xml"):
-        data = InventoryRefactor(XmlImporter).import_data(sys.argv[1], sys.argv[2])
+        data = InventoryRefactor(XmlImporter).import_data(
+            sys.argv[1], sys.argv[2])
 
         print(data)
         return data
