@@ -10,13 +10,13 @@ class Inventory:
     @classmethod
     def import_data(cls, filepath, report_type):
         try:
-            extension = re.search(r'\.(.*)', filepath).group(1)
-            handler = {
-                'csv': cls.fetch_products_from_csv(filepath),
-                'json': cls.fetch_products_from_json(filepath),
-                'xml': cls.fetch_products_from_xml(filepath)
+            file_type = re.search(r'\.(.*)', filepath).group(1)
+            fetch_type_handler = {
+                'csv': cls.fetch_products_from_csv,
+                'json': cls.fetch_products_from_json,
+                'xml': cls.fetch_products_from_xml
             }
-            product_list = handler[extension]()
+            product_list = fetch_type_handler[file_type](filepath)
         except FileNotFoundError:
             raise FileNotFoundError('Arquivo inexistente')
         else:
@@ -28,7 +28,6 @@ class Inventory:
     def fetch_products_from_csv(cls, filepath):
         with open(filepath, 'r', encoding='utf-8') as csv_file:
             data = csv.reader(csv_file, delimiter=",", quotechar='"')
-            product_list = cls.fetch_products_from_csv(data)
             headers, *product_data = data
         product_list = []
         for products in product_data:
@@ -57,4 +56,4 @@ class Inventory:
         return product_list
 
 
-print(Inventory.import_data('inventory_report/data/inventory.csv', 'simples'))
+print(Inventory.import_data('inventory_report/data/inventory.csv', 'completo'))
