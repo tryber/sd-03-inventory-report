@@ -12,9 +12,9 @@ class Inventory(Iterable):
     def __iter__(self):
         return InventoryIterator(self.data)
 
-    def import_data(self, path, format):
-        self.data.extend(self.importer.import_data(path))
-        return self.generate_report(self.data, format)
+    def import_data(self, path, reportType):
+        self.data = [*self.data, *self.importer.import_data(path)]
+        return self.generate_report(self.data, reportType)
 
     @classmethod
     def generate_report(cls, products_list, reportType):
