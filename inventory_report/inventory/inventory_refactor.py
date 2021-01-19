@@ -13,12 +13,8 @@ class InventoryRefactor(Iterable):
         return InventoryIterator(self.data)
 
     def import_data(self, filepath, report_type):
-        try:
-            product_list = self.importer.import_data(filepath)
-            self.data.extend(product_list)
-        except FileNotFoundError:
-            raise FileNotFoundError('Arquivo inexistente')
-        else:
-            if(report_type == 'simples'):
-                return SimpleReport.generate(product_list)
-            return CompleteReport.generate(product_list)
+        product_list = self.importer.import_data(filepath)
+        self.data.extend(product_list)
+        if(report_type == 'simples'):
+            return SimpleReport.generate(product_list)
+        return CompleteReport.generate(product_list)
