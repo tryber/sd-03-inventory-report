@@ -5,7 +5,7 @@ class InventoryIterator(Iterator):
     def __init__(self, iterable):
         self._iterable = iterable
         self._position = 0
-    
+
     def __next__(self):
         try:
             current_value = self._iterable[self._position]

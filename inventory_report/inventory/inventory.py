@@ -6,6 +6,7 @@ from inventory_report.importer.json_importer import JsonImporter
 from inventory_report.importer.xml_importer import XmlImporter
 from collections.abc import Iterable
 
+
 class Inventory(Iterable):
     @classmethod
     def import_data(cls, filepath, report_type):
@@ -23,4 +24,3 @@ class Inventory(Iterable):
             if(report_type == 'simples'):
                 return SimpleReport.generate(product_list)
             return CompleteReport.generate(product_list)
-
