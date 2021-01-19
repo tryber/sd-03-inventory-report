@@ -4,9 +4,9 @@ from inventory_report.reports.complete_report import CompleteReport
 from inventory_report.importer.csv_importer import CsvImporter
 from inventory_report.importer.json_importer import JsonImporter
 from inventory_report.importer.xml_importer import XmlImporter
+from collections.abc import Iterable
 
-
-class Inventory:
+class Inventory(Iterable):
     @classmethod
     def import_data(cls, filepath, report_type):
         try:
@@ -23,3 +23,4 @@ class Inventory:
             if(report_type == 'simples'):
                 return SimpleReport.generate(product_list)
             return CompleteReport.generate(product_list)
+
