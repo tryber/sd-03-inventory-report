@@ -39,7 +39,6 @@ class Inventory:
     @classmethod
     def import_data(self, path, generate_type):
         data_type = path.split('.')[~0]
-        print(data_type)
         conversors = {
             'csv': self.csv_conversor,
             'json': self.json_conversor,
